@@ -1,5 +1,5 @@
 # dvo_python: Dense visual odometry in Python(3.6(.6)) 
-> Coded up in _slightly longer than_ a night! :)
+> Coded up in _slightly longer than_ two nights! :)
 
 Someone tweeted about [this elegant implementation ](https://github.com/muskie82/simple_dvo), and that's what made my day (rather, my night). I was like, "Hmm, a good refresher on dense SLAM would be to implement this, let me do it in Python."
 
@@ -8,6 +8,7 @@ The first coding sprint ran for about 7.5 hours, in which I implemented most of 
 
 ## Micromanagement
 
+### Sprint 1
 - [x] Work out dependencies (`numpy`, `OpenCV`, some SE(3) package(??), `matplotlib`)
 - [x] Read in a pair of pointclouds and visualize them
 - [x] Construct image and depth pyramids
@@ -16,6 +17,10 @@ The first coding sprint ran for about 7.5 hours, in which I implemented most of 
 - [x] Implement image gradient computation
 - [x] Compute Jacobian of the error function
 - [x] Write a Gradient-descent optimizer
+
+### Sprint 2
+- [ ] Vectorize warping implementation
+- [ ] Visualize photometric warp
 - [ ] Write a Gauss-Newton optimizer
 - [ ] Robustify the error function (IRLS / M-Estimators)
 - [ ] Debug the two-image alignment case
@@ -57,3 +62,5 @@ Night 1: 21 November-22 November 2018
 Day 2: 22 November 2018
 * 1100 - 1130: Vectorize image pyramid level construction
 * 1614 - 1645: Vectorize edge-preserving depth pyramid level construction
+
+Night 2: 30 November-01 December 2018

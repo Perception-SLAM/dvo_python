@@ -78,29 +78,29 @@ def main(args):
 	# cv2.imshow('depth_down', pyramid_depth[2])
 	# cv2.waitKey(0)
 
-	# Test Jacobian computation
-	J = photometric_alignment.computeJacobian(img_gray_prev, img_depth_prev, img_gray_cur, \
-		K, xi_init, residuals, cache_point3d)
+	# # Test Jacobian computation
+	# J = photometric_alignment.computeJacobian(img_gray_prev, img_depth_prev, img_gray_cur, \
+	# 	K, xi_init, residuals, cache_point3d)
 
-	# Simple gradient descent test
-	stepsize = 1e-6
-	max_iters = 100
-	tol = 1e-8
-	err_prev = 1e24
-	for it in range(max_iters):
-		residuals, cache_point3d = photometric_alignment.computeResiduals(img_gray_prev, \
-			img_depth_prev, img_gray_cur, K, xi_init)
-		J = photometric_alignment.computeJacobian(img_gray_prev, img_depth_prev, img_gray_cur, \
-			K, xi_init, residuals, cache_point3d)
-		# Normalize the error and the jacobian
-		err_cur = 0.5 * (1 / (img_gray_cur.shape[0]*img_gray_cur.shape[1])) * np.sum(np.abs(residuals))
-		grad = (1 / (img_gray_cur.shape[0]*img_gray_cur.shape[1])) * np.reshape(np.sum(J, axis=(0,1)).T, (6,1))
-		print('Error: ', err_cur)
-		print('Jacobian: ', np.sum(J, axis=(0,1)))
-		xi_init += stepsize * grad
-		if np.abs(err_prev - err_cur) < tol:
-			break
-		err_prev = err_cur
+	# # Simple gradient descent test
+	# stepsize = 1e-6
+	# max_iters = 100
+	# tol = 1e-8
+	# err_prev = 1e24
+	# for it in range(max_iters):
+	# 	residuals, cache_point3d = photometric_alignment.computeResiduals(img_gray_prev, \
+	# 		img_depth_prev, img_gray_cur, K, xi_init)
+	# 	J = photometric_alignment.computeJacobian(img_gray_prev, img_depth_prev, img_gray_cur, \
+	# 		K, xi_init, residuals, cache_point3d)
+	# 	# Normalize the error and the jacobian
+	# 	err_cur = 0.5 * (1 / (img_gray_cur.shape[0]*img_gray_cur.shape[1])) * np.sum(np.abs(residuals))
+	# 	grad = (1 / (img_gray_cur.shape[0]*img_gray_cur.shape[1])) * np.reshape(np.sum(J, axis=(0,1)).T, (6,1))
+	# 	print('Error: ', err_cur)
+	# 	print('Jacobian: ', np.sum(J, axis=(0,1)))
+	# 	xi_init += stepsize * grad
+	# 	if np.abs(err_prev - err_cur) < tol:
+	# 		break
+	# 	err_prev = err_cur
 
 	
 	# fig, ax = plt.subplots(2, 2)
